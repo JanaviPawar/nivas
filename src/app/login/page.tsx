@@ -48,23 +48,23 @@ export default function LoginPage() {
         <span className="relative z-10 text-white text-xl font-medium tracking-tight">nivas</span>
 
         <div className="relative z-10 space-y-3">
-          <p className="text-xs text-white/40 uppercase tracking-wider mb-3">Notice board</p>
+          <p className="text-xs text-white/40 uppercase tracking-wider mb-3">What residents see</p>
           <div className="bg-clay-600 rounded-xl px-4 py-3 flex items-start gap-2 shadow-lg shadow-black/20">
-            <span className="text-white text-sm mt-0.5">📌</span>
-            <div>
-              <p className="text-white text-sm font-medium">Water supply maintenance</p>
-              <p className="text-white/70 text-xs">Shut off 10am–2pm tomorrow</p>
-            </div>
-          </div>
-          <div className="bg-navy-800 rounded-xl px-4 py-3">
-            <p className="text-white/80 text-sm font-medium">Lift servicing completed</p>
-            <p className="text-white/40 text-xs">Block B, both lifts operational</p>
-          </div>
-          <div className="bg-navy-800 rounded-xl px-4 py-3 opacity-60">
-            <p className="text-white/80 text-sm font-medium">Diwali decoration meeting</p>
-            <p className="text-white/40 text-xs">Sat 6pm, clubhouse</p>
-          </div>
-        </div>
+  <span className="text-white text-sm mt-0.5">📌</span>
+  <div>
+    <p className="text-white text-sm font-medium">Pinned notice</p>
+    <p className="text-white/70 text-xs">Important updates rise to the top</p>
+  </div>
+</div>
+<div className="bg-navy-800 rounded-xl px-4 py-3">
+  <p className="text-white/80 text-sm font-medium">Regular notice</p>
+  <p className="text-white/40 text-xs">Everyone stays in the loop</p>
+</div>
+<div className="bg-navy-800 rounded-xl px-4 py-3 opacity-60">
+  <p className="text-white/80 text-sm font-medium">Another update</p>
+  <p className="text-white/40 text-xs">Posted by your society admin</p>
+</div>
+</div>
 
         <p className="relative z-10 text-xs text-white/30">Society maintenance, handled properly.</p>
       </div>
