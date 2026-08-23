@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  RESIDENT
+  ADMIN
+}
+
+enum ComplaintStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum Category {
+  PLUMBING
+  ELECTRICAL
+  CLEANING
+  SECURITY
+  PARKING
+  LIFT
+  OTHER
+}
+
+model Society {
+  id            String    @id @default(cuid())
+  name          String
+  overdueDays   Int       @default(7) // configurable overdue threshold
+  createdAt     DateTime  @default(now())
+
+  users         User[]
+  complaints    Complaint[]
+  notices       Notice[]
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  password      String    // hashed
+  role          Role      @default(RESIDENT)
+  flatNumber    String?   // e.g. "A-204", only relevant for residents
+  createdAt     DateTime  @default(now())
+
+  societyId     String
+  society       Society   @relation(fields: [societyId], references: [id])
+
+  complaints    Complaint[]      @relation("ComplaintRaisedBy")
+  statusChanges ComplaintStatusHistory[] @relation("StatusChangedBy")
+  notices       Notice[]         @relation("NoticePostedBy")
+}
+
+model Complaint {
+  id            String    @id @default(cuid())
+  title         String
+  description   String
+  category      Category
+  priority      Priority  @default(LOW)
+  status        ComplaintStatus @default(OPEN)
+  photoUrl      String?
+  isOverdue     Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  resolvedAt    DateTime?
+
+  societyId     String
+  society       Society   @relation(fields: [societyId], references: [id])
+
+  raisedById    String
+  raisedBy      User      @relation("ComplaintRaisedBy", fields: [raisedById], references: [id])
+
+  statusHistory ComplaintStatusHistory[]
+
+  @@index([societyId, status])
+  @@index([societyId, category])
+}
+
+// This is the audit trail — every status change is a permanent record.
+// Never update this table's rows, only ever insert new ones.
+model ComplaintStatusHistory {
+  id            String    @id @default(cuid())
+  status        ComplaintStatus
+  note          String?
+  changedAt     DateTime  @default(now())
+
+  complaintId   String
+  complaint     Complaint @relation(fields: [complaintId], references: [id])
+
+  changedById   String
+  changedBy     User      @relation("StatusChangedBy", fields: [changedById], references: [id])
+}
+
+model Notice {
+  id            String    @id @default(cuid())
+  title         String
+  content       String
+  isImportant   Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+
+  societyId     String
+  society       Society   @relation(fields: [societyId], references: [id])
+
+  postedById    String
+  postedBy      User      @relation("NoticePostedBy", fields: [postedById], references: [id])
+}

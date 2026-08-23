@@ -1,0 +1,73 @@
+@import "tailwindcss";
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: #0f172a;
+  color: white;
+}
+
+/* subtle fade-in for page content */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: fadeIn 0.35s ease-out;
+}
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme {
+  --color-cream: #faf6f1;
+  --color-clay-50: #fdf1ea;
+  --color-clay-100: #f8dcc9;
+  --color-clay-400: #d98a5f;
+  --color-clay-500: #c1633d;
+  --color-clay-600: #a8502e;
+  --color-clay-700: #8a3f24;
+  --color-navy-900: #0f172a;
+  --color-navy-800: #1c2a41;
+  --color-navy-700: #2c3a52;
+  --color-ink: #1f2937;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+input,
+select,
+textarea {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #0f172a;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+select {
+  color: #0f172a;
+  background-color: white;
+  color-scheme: light;
+}
+
+input {
+  color-scheme: light;
+}
