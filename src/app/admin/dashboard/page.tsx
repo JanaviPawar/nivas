@@ -76,11 +76,11 @@ export default function AdminDashboardPage() {
   const maxPriorityCount = Math.max(...stats.byPriority.map((p) => p.count), 1);
 
   const cards = [
-  { label: "Total Complaints", value: stats.totalComplaints, emoji: "📋", accent: "#0f172a", bg: "bg-ink/[0.03]" },
-  { label: "Open", value: openCount, emoji: "🕐", accent: "#f59e0b", bg: "bg-amber-50" },
-  { label: "In Progress", value: inProgressCount, emoji: "⏳", accent: "#3b82f6", bg: "bg-blue-50" },
-  { label: "Resolved", value: resolvedCount, emoji: "✅", accent: "#22c55e", bg: "bg-green-50" },
-  { label: "Overdue", value: stats.overdueCount, emoji: "⚠️", accent: "#c1633d", bg: "bg-clay-50" },
+  { label: "Total Complaints", value: stats.totalComplaints, accent: "#0f172a", bg: "bg-ink/[0.03]" },
+  { label: "Open", value: openCount, accent: "#f59e0b", bg: "bg-amber-50" },
+  { label: "In Progress", value: inProgressCount, accent: "#3b82f6", bg: "bg-blue-50" },
+  { label: "Resolved", value: resolvedCount, accent: "#22c55e", bg: "bg-green-50" },
+  { label: "Overdue", value: stats.overdueCount, accent: "#c1633d", bg: "bg-clay-50" },
 ];
 
   return (
@@ -101,7 +101,7 @@ export default function AdminDashboardPage() {
           {cards.map((c) => (
             <div key={c.label} className={`relative overflow-hidden rounded-2xl border border-ink/10 ${c.bg} p-5 transition-transform hover:-translate-y-0.5 hover:shadow-md`}>
               <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: c.accent }} />
-              <span className="text-xl block mb-3">{c.emoji}</span>
+              
               <p className="text-3xl font-semibold text-ink tracking-tight">{c.value}</p>
               <p className="text-xs text-ink/50 mt-1">{c.label}</p>
             </div>

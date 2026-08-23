@@ -1,4 +1,4 @@
-# 🏢 Nivas — Society Maintenance Tracker
+# Nivas — Society Maintenance Tracker
 
 **A full-stack platform for apartment societies to manage maintenance complaints — from raise to resolve — with complete audit history, automated overdue detection, and real-time notifications.**
 
@@ -9,9 +9,9 @@
 ![Tailwind](https://img.shields.io/badge/Tailwind-4-38B2AC?logo=tailwind-css)
 ![Deployed](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)
 
-🔗 **Live App:** [nivas-janz.vercel.app](https://nivas-janz.vercel.app)
-📂 **Repository:** [github.com/JanaviPawar/nivas](https://github.com/JanaviPawar/nivas)
-📄 **System Design Write-up:** [SYSTEM_DESIGN.md](./SYSTEM_DESIGN.md)
+**Live App:** [nivas-janz.vercel.app](https://nivas-janz.vercel.app)
+**Repository:** [github.com/JanaviPawar/nivas](https://github.com/JanaviPawar/nivas)
+**System Design Write-up:** [SYSTEM_DESIGN.md](./SYSTEM_DESIGN.md)
 
 ---
 
@@ -60,23 +60,23 @@ Apartment societies typically manage maintenance complaints through scattered Wh
 ## Features
 
 ### Core (per assignment spec)
-- ✅ Resident registration, login, and complaint raising with category, description, and optional photo
-- ✅ Resident view of all complaints with full status history
-- ✅ Admin view of all complaints with filters (category, status, date range)
-- ✅ Priority management (Low / Medium / High)
-- ✅ Status lifecycle (Open → In Progress → Resolved) with timestamped, attributed history and optional notes
-- ✅ Automatic closure on Resolved
-- ✅ Configurable overdue detection, surfaced at the top of the admin view
-- ✅ Notice board with pinned "important" notices
-- ✅ Email notifications on status change and important notices
-- ✅ Admin dashboard: totals by status, by category, overdue count
+- Resident registration, login, and complaint raising with category, description, and optional photo
+- Resident view of all complaints with full status history
+- Admin view of all complaints with filters (category, status, date range)
+- Priority management (Low / Medium / High)
+- Status lifecycle (Open → In Progress → Resolved) with timestamped, attributed history and optional notes
+- Automatic closure on Resolved
+- Configurable overdue detection, surfaced at the top of the admin view
+- Notice board with pinned "important" notices
+- Email notifications on status change and important notices
+- Admin dashboard: totals by status, by category, overdue count
 
 ### Beyond the spec
-- 🔁 **Recurring issue detection** — flags when the same flat raises 2+ complaints in the same category within 60 days, directly answering the brief's call-out that admins have "no way to see which issues keep coming back"
-- 🏘️ **True multi-tenancy** — supports unlimited independent societies with complete server-side data isolation, not a single hardcoded society
-- 📊 **Extended reporting** — resolution rate, average resolution time, 30-day complaint trend, priority breakdown, and longest-waiting open complaints
-- 🔒 **Gated admin signup** — prevents anonymous self-registration as admin, since admin accounts have society-wide control
-- 🛡️ **Rate limiting** on login/register to slow brute-force and spam signups
+- **Recurring issue detection** — flags when the same flat raises 2+ complaints in the same category within 60 days, directly answering the brief's call-out that admins have "no way to see which issues keep coming back"
+- **True multi-tenancy** — supports unlimited independent societies with complete server-side data isolation, not a single hardcoded society
+- **Extended reporting** — resolution rate, average resolution time, 30-day complaint trend, priority breakdown, and longest-waiting open complaints
+- **Gated admin signup** — prevents anonymous self-registration as admin, since admin accounts have society-wide control
+- **Rate limiting** on login/register to slow brute-force and spam signups
 
 ---
 
