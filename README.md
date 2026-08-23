@@ -225,7 +225,7 @@ For quick evaluation without registering a new account:
 
 ### 1. Clone and install
 ```bash
-git clone https://github.com/YOUR-USERNAME/nivas.git
+git clone https://github.com/JanaviPawar/nivas.git
 cd nivas
 npm install
 ```
