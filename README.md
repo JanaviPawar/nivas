@@ -55,6 +55,17 @@ Apartment societies typically manage maintenance complaints through scattered Wh
 |---|---|
 | ![Admin Dashboard](./screenshots/admin-dashboard.png) | ![Notice Board](./screenshots/notice-board.png) |
 
+| Status Change Email | Important Notice Email |
+|---|---|
+| ![Status Email](./screenshots/email-status-change.png) | ![Notice Email](./screenshots/email-notice.png) |
+
+| Status Change Email | Important Notice Email |
+|---|---|
+| ![Status Email](./screenshots/email-status-change.png) | ![Notice Email](./screenshots/email-notice.png) |
+
+| Full Status History | Recurring Issue Detection |
+|---|---|
+| ![Status History](./screenshots/status-history.png) | ![Recurring Badge](./screenshots/recurring-badge.png) |
 ---
 
 ## Features
