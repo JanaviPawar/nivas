@@ -40,15 +40,18 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# AI tooling artifacts
 CLAUDE.md
 AGENTS.md
 .claude/
-.cursor/
-/app/generated/prisma
 .agents/
-.claude/
 .windsurf/
 .cursor/
 skills-lock.json
-CLAUDE.md
-AGENTS.md
+
+# editor
+.vscode/
+.idea/
+
+# generated
+/app/generated/prisma

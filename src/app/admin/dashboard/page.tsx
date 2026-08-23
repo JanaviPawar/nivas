@@ -7,9 +7,7 @@ import { useAuth } from "@/lib/auth-context";
 import {
   PieChart, Pie, Cell, Tooltip, ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid,
 } from "recharts";
-import {
-  ClipboardList, Clock, Loader2, CheckCircle2, AlertTriangle, ArrowLeft, Timer,
-} from "lucide-react";
+
 
 type StatusStat = { status: string; count: number };
 type CategoryStat = { category: string; count: number };
@@ -78,12 +76,12 @@ export default function AdminDashboardPage() {
   const maxPriorityCount = Math.max(...stats.byPriority.map((p) => p.count), 1);
 
   const cards = [
-    { label: "Total Complaints", value: stats.totalComplaints, icon: ClipboardList, accent: "#0f172a", bg: "bg-ink/[0.03]" },
-    { label: "Open", value: openCount, icon: Clock, accent: "#f59e0b", bg: "bg-amber-50" },
-    { label: "In Progress", value: inProgressCount, icon: Loader2, accent: "#3b82f6", bg: "bg-blue-50" },
-    { label: "Resolved", value: resolvedCount, icon: CheckCircle2, accent: "#22c55e", bg: "bg-green-50" },
-    { label: "Overdue", value: stats.overdueCount, icon: AlertTriangle, accent: "#c1633d", bg: "bg-clay-50" },
-  ];
+  { label: "Total Complaints", value: stats.totalComplaints, emoji: "📋", accent: "#0f172a", bg: "bg-ink/[0.03]" },
+  { label: "Open", value: openCount, emoji: "🕐", accent: "#f59e0b", bg: "bg-amber-50" },
+  { label: "In Progress", value: inProgressCount, emoji: "⏳", accent: "#3b82f6", bg: "bg-blue-50" },
+  { label: "Resolved", value: resolvedCount, emoji: "✅", accent: "#22c55e", bg: "bg-green-50" },
+  { label: "Overdue", value: stats.overdueCount, emoji: "⚠️", accent: "#c1633d", bg: "bg-clay-50" },
+];
 
   return (
     <div className="min-h-screen bg-cream page-enter">
@@ -93,8 +91,8 @@ export default function AdminDashboardPage() {
           <p className="text-xs text-ink/40">Reporting Dashboard</p>
         </div>
         <Link href="/admin" className="flex items-center gap-1.5 text-sm text-ink/50 hover:text-ink transition-colors">
-          <ArrowLeft size={15} /> Back to Complaints
-        </Link>
+  ← Back to Complaints
+</Link>
       </header>
 
       <main className="max-w-5xl mx-auto px-6 py-10">
@@ -103,7 +101,7 @@ export default function AdminDashboardPage() {
           {cards.map((c) => (
             <div key={c.label} className={`relative overflow-hidden rounded-2xl border border-ink/10 ${c.bg} p-5 transition-transform hover:-translate-y-0.5 hover:shadow-md`}>
               <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: c.accent }} />
-              <c.icon size={18} style={{ color: c.accent }} className="mb-3" />
+              <span className="text-xl block mb-3">{c.emoji}</span>
               <p className="text-3xl font-semibold text-ink tracking-tight">{c.value}</p>
               <p className="text-xs text-ink/50 mt-1">{c.label}</p>
             </div>
@@ -125,7 +123,7 @@ export default function AdminDashboardPage() {
 
           <div className="bg-white border border-ink/10 rounded-2xl p-6 flex items-center gap-4">
             <div className="bg-navy-900/5 p-3 rounded-xl">
-              <Timer size={20} className="text-navy-900" />
+                <span className="text-xl">⏱️</span>
             </div>
             <div>
               <p className="text-2xl font-semibold text-ink">
