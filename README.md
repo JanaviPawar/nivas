@@ -79,11 +79,17 @@ Apartment societies typically manage maintenance complaints through scattered Wh
 - Admin dashboard: totals by status, by category, overdue count
 
 ### Beyond the spec
-- **Recurring issue detection** — flags when the same flat raises 2+ complaints in the same category within 60 days, directly answering the brief's call-out that admins have "no way to see which issues keep coming back"
-- **True multi-tenancy** — supports unlimited independent societies with complete server-side data isolation, not a single hardcoded society
-- **Extended reporting** — resolution rate, average resolution time, 30-day complaint trend, priority breakdown, and longest-waiting open complaints
-- **Gated admin signup** — prevents anonymous self-registration as admin, since admin accounts have society-wide control
-- **Rate limiting** on login/register to slow brute-force and spam signups
+- **Recurring issue detection** — flags when the same flat raises 2+ complaints in the same category within 60 days
+- **True multi-tenancy** — unlimited independent societies with complete server-side data isolation
+- **Extended reporting** — resolution rate, average resolution time, 30-day trend, priority breakdown, longest-waiting open complaints
+- **Proportional access control** — admin signup gated by a shared secret (society-wide privilege), resident signup left open (privilege scoped to own data only)
+- **Rate limiting** on login (10/min) and registration (5/min) per IP to slow brute-force and spam signups
+- **Email enumeration prevention** — registration errors never reveal whether an email is already in use
+- **Serverless-safe photo handling** — uploads stream to Cloudinary from memory, never touching local disk (required for Vercel's stateless functions)
+- **Throttled overdue recomputation** — recalculated at most once per minute per society to avoid redundant writes, plus a genuine daily scheduled job (Vercel Cron) as the production-grade path
+- **Fully responsive** across mobile, tablet, and desktop
+- **Custom design system** — consistent color tokens and component patterns across every page, not default component-library styling
+- **Custom 404 and landing pages** — no default framework scaffolding left in place
 
 ---
 
