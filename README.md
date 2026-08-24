@@ -199,17 +199,36 @@ erDiagram
 
 ---
 
-## Demo Credentials
+---
 
-For quick evaluation without registering a new account:
+##  Try It Now
 
-**Admin**
-- Email: `admin@test.com`
-- Password: `test123`
+**[Open Live App →](https://nivas-janz.vercel.app)**
 
-**Resident**
-- Email: `resident@nivas-demo.com`
-- Password: `Demo@1234`
+On the login page, click **"Try as Resident"** or **"Try as Admin"** for instant one-click access — no registration needed.
+
+Or use these credentials directly:
+
+| Role | Email | Password |
+|---|---|---|
+| Admin | `admin@test.com` | `test123` |
+| Resident | `resident@nivas-demo.com` | `Demo@1234` |
+
+## Evaluation Flow
+
+**As Resident** (2 min)
+1. Click "Try as Resident" → lands on dashboard with existing complaints + a pinned notice
+2. Raise a new complaint with a photo
+3. Expand "Status history" on any complaint to see the full audit trail
+
+**As Admin** (3 min)
+1. Click "Try as Admin" → see all complaints, with overdue ones pinned at top
+2. Notice the "Recurring" badge on a plumbing complaint — flags repeat issues automatically
+3. Change a complaint's priority, then its status (add a note) — check the history updates
+4. Visit **Dashboard** → resolution rate, trend chart, category/priority breakdown
+5. Visit **Notice Board** → post an important notice, see it pin to the top
+
+---
 
 > Admin registration is gated by a shared secret code (`ADMIN_SIGNUP_CODE`) to prevent public self-registration as admin — access control is proportional to privilege: admin accounts have society-wide visibility and control, so signup is gated, while resident accounts are scoped only to their own complaints, so signup is left open. Use the demo admin account above rather than registering a new admin.
 
