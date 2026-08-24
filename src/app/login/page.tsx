@@ -13,6 +13,28 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  async function loginAs(demoEmail: string, demoPassword: string) {
+  setError("");
+  setLoading(true);
+
+  const res = await fetch("/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: demoEmail, password: demoPassword }),
+  });
+
+  let data: any = {};
+  try { data = await res.json(); } catch {}
+  setLoading(false);
+
+  if (!res.ok) {
+    setError(data.error || "Demo login failed");
+    return;
+  }
+
+  await refreshUser();
+  router.push(data.user.role === "ADMIN" ? "/admin" : "/dashboard");
+}
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -116,6 +138,25 @@ export default function LoginPage() {
               {loading ? "Logging in..." : "Log in"}
             </button>
           </form>
+          <div className="mt-5 pt-5 border-t border-ink/10">
+  <p className="text-xs text-ink/40 text-center mb-3">Or explore with a demo account</p>
+  <div className="flex gap-2">
+    <button
+      onClick={() => loginAs("resident@nivas-demo.com", "Demo@1234")}
+      disabled={loading}
+      className="flex-1 border border-ink/15 text-ink text-sm font-medium py-2 rounded-full hover:bg-ink/[0.03] transition-all disabled:opacity-50"
+    >
+      Try as Resident
+    </button>
+    <button
+      onClick={() => loginAs("admin@test.com", "test123")}
+      disabled={loading}
+      className="flex-1 border border-ink/15 text-ink text-sm font-medium py-2 rounded-full hover:bg-ink/[0.03] transition-all disabled:opacity-50"
+    >
+      Try as Admin
+    </button>
+  </div>
+</div>
 
           <p className="text-sm text-ink/50 text-center mt-6">
             Don't have an account?{" "}
